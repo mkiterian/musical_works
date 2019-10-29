@@ -13,6 +13,7 @@ django = "*"
 djangorestframework = "*"
 psycopg2 = "*"
 pep8 = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.7"
