@@ -19,7 +19,7 @@ class Command(BaseCommand):
             next(data_file)
             data = csv.reader(data_file)
             for row in data:
-                if(len(row)):
+                if len(row):
                     title = row[0]
                     contributor_names = row[1].split("|")
                     iswc = row[2]
@@ -29,7 +29,10 @@ class Command(BaseCommand):
                 try:
                     works = Work.objects.filter(
                         Q(iswc=iswc)
-                        | Q(Q(title=title), Q(contributors__name__in=contributor_names))
+                        | Q(
+                            Q(title=title),
+                            Q(contributors__name__in=contributor_names),
+                        )
                     )
                     work = None
 
@@ -39,7 +42,9 @@ class Command(BaseCommand):
                     else:
                         work = Work.objects.create(title=title, iswc=iswc,)
                         self.stdout.write(
-                            "\nWork titled {} created successfully".format(work.title)
+                            "\nWork titled {} created successfully".format(
+                                work.title
+                            )
                         )
 
                     self._update_contributors(work, contributor_names)
