@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'musical_works.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'works',
+        'USER': 'works_admin',
+        'PASSWORD': 'asdfmovie123%',
+        'HOST': 'localhost',
+        'PORT': 5432
     }
 }
 
