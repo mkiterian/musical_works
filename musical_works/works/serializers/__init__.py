@@ -1,1 +1,2 @@
 from .contributor_serializer import ContributorSerializer
+from .work_serializer import WorkSerializer
