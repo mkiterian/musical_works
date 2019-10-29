@@ -11,4 +11,3 @@ class WorkSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Work
         fields = ['title', 'iswc', 'contributors']
-

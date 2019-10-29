@@ -10,7 +10,8 @@ class Command(BaseCommand):
     help = "Ingest works data from a CSV file"
 
     def add_arguments(self, parser):
-        parser.add_argument("csv_file", help="Name of csv file with works data")
+        parser.add_argument(
+            "csv_file", help="Name of csv file with works data")
 
     def _ingest_data_from_file(self, file_name):
         file_path = os.path.join(BASE_DIR, "resources", "csv", file_name)
