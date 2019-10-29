@@ -53,10 +53,12 @@ class Command(BaseCommand):
                     raise CommandError(str(e))
 
     def _update_contributors(self, work, contributor_names):
+        temp_contributors = []
         for name in contributor_names:
             contributor, _ = Contributor.objects.get_or_create(name=name)
             if not work.contributors.all().filter(id=contributor.id).exists():
-                work.contributors.add(contributor)
+                temp_contributors.append(contributor)
+        work.contributors.add(*temp_contributors)
 
     def _update_iswc(self, work_queryset, iswc):
         work = work_queryset.first()
