@@ -19,9 +19,12 @@ class Command(BaseCommand):
             next(data_file)
             data = csv.reader(data_file)
             for row in data:
-                title = row[0]
-                contributor_names = row[1].split("|")
-                iswc = row[2]
+                if(len(row)):
+                    title = row[0]
+                    contributor_names = row[1].split("|")
+                    iswc = row[2]
+                else:
+                    continue
 
                 try:
                     works = Work.objects.filter(

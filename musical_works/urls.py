@@ -16,13 +16,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from rest_framework import routers
+from musical_works.works.models import Work
 from musical_works.works.views import (
     ContributorViewSet,
     WorkViewSet,
 )
 
 router = routers.DefaultRouter()
-router.register("works", WorkViewSet)
+router.register("works", WorkViewSet, base_name=Work)
 router.register("contributors", ContributorViewSet)
 
 urlpatterns = [
